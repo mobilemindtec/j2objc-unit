@@ -27,7 +27,7 @@
     self.navigationItem.rightBarButtonItem = item;
 
     CGRect bounds = UIScreen.mainScreen.bounds;
-    self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, bounds.size.width, bounds.size.height)];
+    self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 44, bounds.size.width, bounds.size.height)];
 
     self.view.backgroundColor = UIColor.whiteColor;
 
