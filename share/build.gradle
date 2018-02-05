@@ -30,3 +30,6 @@ task j2objc(type: Exec) {
 }
 
 tasks.assemble.finalizedBy(j2objc)
+
+targetCompatibility = '1.7'
+sourceCompatibility = '1.7'
