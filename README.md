@@ -1,6 +1,8 @@
 # J2ObjC Unit
 
-## Install
+This lib is based on https://github.com/mobilemindtec/droidunit.git
+
+## Install and configure
 
 ### IOS
 
@@ -16,13 +18,16 @@ compile fileTree(dir: 'path_to/j2objc-unit/share/build/libs', include: '*.jar')
 compile fileTree(dir: 'path_to/libs/j2objc-unit/android/build/libs', include: '*.aar')
 ```
 
-## Shared Project
+### Shared Project
 
 If you are working or you want work with shared project, you can follow this sample project https://github.com/mobilemindtec/j2objc-app-test.git
 
-## Write testes (Java)
+
+
+## Write and run testes (Java)
 
 To write shared tests see https://github.com/mobilemindtec/droidunit.git
+
 
 ## Android Usage
 
