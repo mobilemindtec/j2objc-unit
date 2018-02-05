@@ -16,7 +16,9 @@ compile fileTree(dir: 'path_to/j2objc-unit/share/build/libs', include: '*.jar')
 compile fileTree(dir: 'path_to/libs/j2objc-unit/android/build/libs', include: '*.aar')
 ```
 
-Or, you can follow this sample project https://github.com/mobilemindtec/j2objc-app-test.git
+## Shared Project
+
+If you are working or you want work with shared project, you can follow this sample project https://github.com/mobilemindtec/j2objc-app-test.git
 
 ## Write testes (Java)
 
