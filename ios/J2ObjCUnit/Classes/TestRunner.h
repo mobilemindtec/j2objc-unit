@@ -3,24 +3,23 @@
 //  source: ./build/j2objc/java/TestRunner.java
 //
 
-#include "J2ObjC_header.h"
+#ifndef TestRunner_H
+#define TestRunner_H
 
-#pragma push_macro("INCLUDE_ALL_TestRunner")
-#ifdef RESTRICT_TestRunner
-#define INCLUDE_ALL_TestRunner 0
-#else
-#define INCLUDE_ALL_TestRunner 1
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability"
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
 #endif
-#undef RESTRICT_TestRunner
 
-#if !defined (J2ObjCUnitTestRunner_) && (INCLUDE_ALL_TestRunner || defined(INCLUDE_J2ObjCUnitTestRunner))
-#define J2ObjCUnitTestRunner_
+#include "J2ObjC_header.h"
 
 @class IOSClass;
 @class JavaUtilLoggingLogger;
 @protocol J2ObjCUnitOutputDir;
 
 @interface J2ObjCUnitTestRunner : NSObject
+@property (readonly, class) JavaUtilLoggingLogger *logger NS_SWIFT_NAME(logger);
 
 + (JavaUtilLoggingLogger *)logger;
 
@@ -35,7 +34,7 @@
 
 #pragma mark Package-Private
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 @end
 
@@ -62,6 +61,8 @@ J2OBJC_TYPE_LITERAL_HEADER(J2ObjCUnitTestRunner)
 
 @compatibility_alias BrComMobilemindJ2objcUnitTestRunner J2ObjCUnitTestRunner;
 
-#endif
 
-#pragma pop_macro("INCLUDE_ALL_TestRunner")
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
+#endif // TestRunner_H

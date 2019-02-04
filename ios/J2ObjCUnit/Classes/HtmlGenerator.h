@@ -3,18 +3,16 @@
 //  source: ./build/j2objc/java/HtmlGenerator.java
 //
 
-#include "J2ObjC_header.h"
+#ifndef HtmlGenerator_H
+#define HtmlGenerator_H
 
-#pragma push_macro("INCLUDE_ALL_HtmlGenerator")
-#ifdef RESTRICT_HtmlGenerator
-#define INCLUDE_ALL_HtmlGenerator 0
-#else
-#define INCLUDE_ALL_HtmlGenerator 1
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability"
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
 #endif
-#undef RESTRICT_HtmlGenerator
 
-#if !defined (J2ObjCUnitHtmlGenerator_) && (INCLUDE_ALL_HtmlGenerator || defined(INCLUDE_J2ObjCUnitHtmlGenerator))
-#define J2ObjCUnitHtmlGenerator_
+#include "J2ObjC_header.h"
 
 @protocol JavaUtilMap;
 
@@ -22,13 +20,13 @@
 
 #pragma mark Public
 
-- (instancetype)initWithJavaUtilMap:(id<JavaUtilMap>)testFails;
+- (instancetype __nonnull)initWithJavaUtilMap:(id<JavaUtilMap>)testFails;
 
 - (NSString *)build;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
@@ -44,6 +42,8 @@ J2OBJC_TYPE_LITERAL_HEADER(J2ObjCUnitHtmlGenerator)
 
 @compatibility_alias BrComMobilemindJ2objcUnitHtmlGenerator J2ObjCUnitHtmlGenerator;
 
-#endif
 
-#pragma pop_macro("INCLUDE_ALL_HtmlGenerator")
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
+#endif // HtmlGenerator_H

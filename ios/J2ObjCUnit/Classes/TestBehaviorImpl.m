@@ -75,6 +75,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(setUp);
   methods[2].selector = @selector(setUpClass);
@@ -103,3 +104,5 @@ void J2ObjCUnitTestBehaviorImpl_init(J2ObjCUnitTestBehaviorImpl *self) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(J2ObjCUnitTestBehaviorImpl)
+
+J2OBJC_NAME_MAPPING(J2ObjCUnitTestBehaviorImpl, "br.com.mobilemind.j2objc.unit", "J2ObjCUnit")

@@ -3,18 +3,16 @@
 //  source: ./build/j2objc/java/OutputDir.java
 //
 
-#include "J2ObjC_header.h"
+#ifndef OutputDir_H
+#define OutputDir_H
 
-#pragma push_macro("INCLUDE_ALL_OutputDir")
-#ifdef RESTRICT_OutputDir
-#define INCLUDE_ALL_OutputDir 0
-#else
-#define INCLUDE_ALL_OutputDir 1
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability"
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
 #endif
-#undef RESTRICT_OutputDir
 
-#if !defined (J2ObjCUnitOutputDir_) && (INCLUDE_ALL_OutputDir || defined(INCLUDE_J2ObjCUnitOutputDir))
-#define J2ObjCUnitOutputDir_
+#include "J2ObjC_header.h"
 
 @protocol J2ObjCUnitOutputDir < JavaObject >
 
@@ -28,6 +26,8 @@ J2OBJC_TYPE_LITERAL_HEADER(J2ObjCUnitOutputDir)
 
 #define BrComMobilemindJ2objcUnitOutputDir J2ObjCUnitOutputDir
 
-#endif
 
-#pragma pop_macro("INCLUDE_ALL_OutputDir")
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
+#endif // OutputDir_H

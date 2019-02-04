@@ -3,18 +3,16 @@
 //  source: ./build/j2objc/java/ExceptionDelegate.java
 //
 
-#include "J2ObjC_header.h"
+#ifndef ExceptionDelegate_H
+#define ExceptionDelegate_H
 
-#pragma push_macro("INCLUDE_ALL_ExceptionDelegate")
-#ifdef RESTRICT_ExceptionDelegate
-#define INCLUDE_ALL_ExceptionDelegate 0
-#else
-#define INCLUDE_ALL_ExceptionDelegate 1
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability"
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
 #endif
-#undef RESTRICT_ExceptionDelegate
 
-#if !defined (J2ObjCUnitExceptionDelegate_) && (INCLUDE_ALL_ExceptionDelegate || defined(INCLUDE_J2ObjCUnitExceptionDelegate))
-#define J2ObjCUnitExceptionDelegate_
+#include "J2ObjC_header.h"
 
 @protocol J2ObjCUnitExceptionDelegate < JavaObject >
 
@@ -28,6 +26,8 @@ J2OBJC_TYPE_LITERAL_HEADER(J2ObjCUnitExceptionDelegate)
 
 #define BrComMobilemindJ2objcUnitExceptionDelegate J2ObjCUnitExceptionDelegate
 
-#endif
 
-#pragma pop_macro("INCLUDE_ALL_ExceptionDelegate")
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
+#endif // ExceptionDelegate_H

@@ -3,28 +3,23 @@
 //  source: ./build/j2objc/java/OutputDirImpl.java
 //
 
-#include "J2ObjC_header.h"
+#ifndef OutputDirImpl_H
+#define OutputDirImpl_H
 
-#pragma push_macro("INCLUDE_ALL_OutputDirImpl")
-#ifdef RESTRICT_OutputDirImpl
-#define INCLUDE_ALL_OutputDirImpl 0
-#else
-#define INCLUDE_ALL_OutputDirImpl 1
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability"
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
 #endif
-#undef RESTRICT_OutputDirImpl
 
-#if !defined (J2ObjCUnitIOSOutputDirImpl_) && (INCLUDE_ALL_OutputDirImpl || defined(INCLUDE_J2ObjCUnitIOSOutputDirImpl))
-#define J2ObjCUnitIOSOutputDirImpl_
-
-#define RESTRICT_OutputDir 1
-#define INCLUDE_J2ObjCUnitOutputDir 1
+#include "J2ObjC_header.h"
 #include "OutputDir.h"
 
 @interface J2ObjCUnitIOSOutputDirImpl : NSObject < J2ObjCUnitOutputDir >
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (NSString *)get;
 
@@ -42,6 +37,8 @@ J2OBJC_TYPE_LITERAL_HEADER(J2ObjCUnitIOSOutputDirImpl)
 
 @compatibility_alias BrComMobilemindJ2objcUnitIosOutputDirImpl J2ObjCUnitIOSOutputDirImpl;
 
-#endif
 
-#pragma pop_macro("INCLUDE_ALL_OutputDirImpl")
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
+#endif // OutputDirImpl_H

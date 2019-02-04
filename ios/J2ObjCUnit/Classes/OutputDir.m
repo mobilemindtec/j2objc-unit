@@ -18,6 +18,7 @@
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(get);
   #pragma clang diagnostic pop
   static const J2ObjcClassInfo _J2ObjCUnitOutputDir = { "OutputDir", "br.com.mobilemind.j2objc.unit", NULL, methods, NULL, 7, 0x609, 1, 0, -1, -1, -1, -1, -1 };
@@ -27,3 +28,5 @@
 @end
 
 J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(J2ObjCUnitOutputDir)
+
+J2OBJC_NAME_MAPPING(J2ObjCUnitOutputDir, "br.com.mobilemind.j2objc.unit", "J2ObjCUnit")

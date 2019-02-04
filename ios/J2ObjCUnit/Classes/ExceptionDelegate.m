@@ -18,6 +18,7 @@
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(execute);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "LJavaLangException;" };
@@ -28,3 +29,5 @@
 @end
 
 J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(J2ObjCUnitExceptionDelegate)
+
+J2OBJC_NAME_MAPPING(J2ObjCUnitExceptionDelegate, "br.com.mobilemind.j2objc.unit", "J2ObjCUnit")

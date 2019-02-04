@@ -142,6 +142,7 @@ __attribute__((unused)) static void J2ObjCUnitHtmlGenerator_endTagWithNSString_(
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithJavaUtilMap:);
   methods[1].selector = @selector(build);
   methods[2].selector = @selector(newLine);
@@ -200,3 +201,5 @@ void J2ObjCUnitHtmlGenerator_endTagWithNSString_(J2ObjCUnitHtmlGenerator *self, 
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(J2ObjCUnitHtmlGenerator)
+
+J2OBJC_NAME_MAPPING(J2ObjCUnitHtmlGenerator, "br.com.mobilemind.j2objc.unit", "J2ObjCUnit")

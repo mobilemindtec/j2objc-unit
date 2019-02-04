@@ -3,21 +3,16 @@
 //  source: ./build/j2objc/java/TestBehaviorImpl.java
 //
 
-#include "J2ObjC_header.h"
+#ifndef TestBehaviorImpl_H
+#define TestBehaviorImpl_H
 
-#pragma push_macro("INCLUDE_ALL_TestBehaviorImpl")
-#ifdef RESTRICT_TestBehaviorImpl
-#define INCLUDE_ALL_TestBehaviorImpl 0
-#else
-#define INCLUDE_ALL_TestBehaviorImpl 1
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability"
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
 #endif
-#undef RESTRICT_TestBehaviorImpl
 
-#if !defined (J2ObjCUnitTestBehaviorImpl_) && (INCLUDE_ALL_TestBehaviorImpl || defined(INCLUDE_J2ObjCUnitTestBehaviorImpl))
-#define J2ObjCUnitTestBehaviorImpl_
-
-#define RESTRICT_TestBehavior 1
-#define INCLUDE_J2ObjCUnitTestBehavior 1
+#include "J2ObjC_header.h"
 #include "TestBehavior.h"
 
 @protocol JavaUtilList;
@@ -26,7 +21,7 @@
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (void)clearMessages;
 
@@ -56,6 +51,8 @@ J2OBJC_TYPE_LITERAL_HEADER(J2ObjCUnitTestBehaviorImpl)
 
 @compatibility_alias BrComMobilemindJ2objcUnitTestBehaviorImpl J2ObjCUnitTestBehaviorImpl;
 
-#endif
 
-#pragma pop_macro("INCLUDE_ALL_TestBehaviorImpl")
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
+#endif // TestBehaviorImpl_H

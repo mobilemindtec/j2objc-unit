@@ -3,33 +3,32 @@
 //  source: ./build/j2objc/java/TestResult.java
 //
 
-#include "J2ObjC_header.h"
+#ifndef TestResult_H
+#define TestResult_H
 
-#pragma push_macro("INCLUDE_ALL_TestResult")
-#ifdef RESTRICT_TestResult
-#define INCLUDE_ALL_TestResult 0
-#else
-#define INCLUDE_ALL_TestResult 1
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability"
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
 #endif
-#undef RESTRICT_TestResult
 
-#if !defined (J2ObjCUnitTestResult_) && (INCLUDE_ALL_TestResult || defined(INCLUDE_J2ObjCUnitTestResult))
-#define J2ObjCUnitTestResult_
+#include "J2ObjC_header.h"
 
 @protocol JavaUtilList;
 
 @interface J2ObjCUnitTestResult : NSObject
+@property (readonly, copy, class) NSString *SUCCESS_MESSAGE NS_SWIFT_NAME(SUCCESS_MESSAGE);
 
 + (NSString *)SUCCESS_MESSAGE;
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
-- (instancetype)initWithNSString:(NSString *)className_
-                    withNSString:(NSString *)methodName
-                    withNSString:(NSString *)testMessage
-                        withLong:(jlong)executionTime;
+- (instancetype __nonnull)initWithNSString:(NSString *)className_
+                              withNSString:(NSString *)methodName
+                              withNSString:(NSString *)testMessage
+                                  withLong:(jlong)executionTime;
 
 - (NSString *)getClassName;
 
@@ -80,6 +79,8 @@ J2OBJC_TYPE_LITERAL_HEADER(J2ObjCUnitTestResult)
 
 @compatibility_alias BrComMobilemindJ2objcUnitTestResult J2ObjCUnitTestResult;
 
-#endif
 
-#pragma pop_macro("INCLUDE_ALL_TestResult")
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
+#endif // TestResult_H

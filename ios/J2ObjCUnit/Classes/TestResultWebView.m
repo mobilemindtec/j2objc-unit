@@ -20,14 +20,27 @@
 
     [self.navigationController setNavigationBarHidden:false];
     self.navigationController.delegate = self;
-    self.navigationController.title = @"J2ObjC Unit Test";
 
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Run Again" style:UIBarButtonItemStylePlain target:self action:@selector(runTestsAgain:)];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Run" style:UIBarButtonItemStylePlain target:self action:@selector(runTestsAgain:)];
 
     self.navigationItem.rightBarButtonItem = item;
 
+    NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
+    if ([[ver objectAtIndex:0] intValue] >= 7) {
+        // iOS 7.0 or later
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:65/255.0 green: 65/255.0 blue: 66/255.0 alpha: 100.0];
+        self.navigationController.navigationBar.translucent = NO;
+    }else {
+        // iOS 6.1 or earlier
+        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:65/255.0 green: 65/255.0 blue: 66/255.0 alpha: 100.0];
+    }
+
+    [self.navigationItem setTitle:@"J2ObjC Unit"];
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor]];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+
     CGRect bounds = UIScreen.mainScreen.bounds;
-    self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 44, bounds.size.width, bounds.size.height)];
+    self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, bounds.size.width, bounds.size.height)];
 
     self.view.backgroundColor = UIColor.whiteColor;
 

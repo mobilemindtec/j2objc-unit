@@ -3,18 +3,16 @@
 //  source: ./build/j2objc/java/Assert.java
 //
 
-#include "J2ObjC_header.h"
+#ifndef Assert_H
+#define Assert_H
 
-#pragma push_macro("INCLUDE_ALL_Assert")
-#ifdef RESTRICT_Assert
-#define INCLUDE_ALL_Assert 0
-#else
-#define INCLUDE_ALL_Assert 1
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability"
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
 #endif
-#undef RESTRICT_Assert
 
-#if !defined (J2ObjCUnitAssert_) && (INCLUDE_ALL_Assert || defined(INCLUDE_J2ObjCUnitAssert))
-#define J2ObjCUnitAssert_
+#include "J2ObjC_header.h"
 
 @class IOSClass;
 @protocol J2ObjCUnitExceptionDelegate;
@@ -23,7 +21,7 @@
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 + (void)areEqualWithId:(id)obj1
                 withId:(id)obj2;
@@ -160,6 +158,8 @@ J2OBJC_TYPE_LITERAL_HEADER(J2ObjCUnitAssert)
 
 @compatibility_alias BrComMobilemindJ2objcUnitAssert J2ObjCUnitAssert;
 
-#endif
 
-#pragma pop_macro("INCLUDE_ALL_Assert")
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
+#endif // Assert_H

@@ -26,6 +26,7 @@
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(setUp);
   methods[1].selector = @selector(setUpClass);
   methods[2].selector = @selector(tearDown);
@@ -44,3 +45,5 @@
 @end
 
 J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(J2ObjCUnitTestBehavior)
+
+J2OBJC_NAME_MAPPING(J2ObjCUnitTestBehavior, "br.com.mobilemind.j2objc.unit", "J2ObjCUnit")

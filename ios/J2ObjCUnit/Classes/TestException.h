@@ -3,21 +3,16 @@
 //  source: ./build/j2objc/java/TestException.java
 //
 
-#include "J2ObjC_header.h"
+#ifndef TestException_H
+#define TestException_H
 
-#pragma push_macro("INCLUDE_ALL_TestException")
-#ifdef RESTRICT_TestException
-#define INCLUDE_ALL_TestException 0
-#else
-#define INCLUDE_ALL_TestException 1
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability"
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
 #endif
-#undef RESTRICT_TestException
 
-#if !defined (J2ObjCUnitTestException_) && (INCLUDE_ALL_TestException || defined(INCLUDE_J2ObjCUnitTestException))
-#define J2ObjCUnitTestException_
-
-#define RESTRICT_JavaLangRuntimeException 1
-#define INCLUDE_JavaLangRuntimeException 1
+#include "J2ObjC_header.h"
 #include "java/lang/RuntimeException.h"
 
 @class JavaLangThrowable;
@@ -26,21 +21,21 @@
 
 #pragma mark Public
 
-- (instancetype)initWithNSString:(NSString *)message;
+- (instancetype __nonnull)initWithNSString:(NSString *)message;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
-- (instancetype)initWithJavaLangThrowable:(JavaLangThrowable *)arg0 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithJavaLangThrowable:(JavaLangThrowable *)arg0 NS_UNAVAILABLE;
 
-- (instancetype)initWithNSString:(NSString *)arg0
-           withJavaLangThrowable:(JavaLangThrowable *)arg1 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithNSString:(NSString *)arg0
+                     withJavaLangThrowable:(JavaLangThrowable *)arg1 NS_UNAVAILABLE;
 
-- (instancetype)initWithNSString:(NSString *)arg0
-           withJavaLangThrowable:(JavaLangThrowable *)arg1
-                     withBoolean:(jboolean)arg2
-                     withBoolean:(jboolean)arg3 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithNSString:(NSString *)arg0
+                     withJavaLangThrowable:(JavaLangThrowable *)arg1
+                               withBoolean:(jboolean)arg2
+                               withBoolean:(jboolean)arg3 NS_UNAVAILABLE;
 
 @end
 
@@ -56,6 +51,8 @@ J2OBJC_TYPE_LITERAL_HEADER(J2ObjCUnitTestException)
 
 @compatibility_alias BrComMobilemindJ2objcUnitTestException J2ObjCUnitTestException;
 
-#endif
 
-#pragma pop_macro("INCLUDE_ALL_TestException")
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
+#endif // TestException_H

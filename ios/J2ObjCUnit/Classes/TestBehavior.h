@@ -3,18 +3,16 @@
 //  source: ./build/j2objc/java/TestBehavior.java
 //
 
-#include "J2ObjC_header.h"
+#ifndef TestBehavior_H
+#define TestBehavior_H
 
-#pragma push_macro("INCLUDE_ALL_TestBehavior")
-#ifdef RESTRICT_TestBehavior
-#define INCLUDE_ALL_TestBehavior 0
-#else
-#define INCLUDE_ALL_TestBehavior 1
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability"
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
 #endif
-#undef RESTRICT_TestBehavior
 
-#if !defined (J2ObjCUnitTestBehavior_) && (INCLUDE_ALL_TestBehavior || defined(INCLUDE_J2ObjCUnitTestBehavior))
-#define J2ObjCUnitTestBehavior_
+#include "J2ObjC_header.h"
 
 @protocol JavaUtilList;
 
@@ -46,6 +44,8 @@ J2OBJC_TYPE_LITERAL_HEADER(J2ObjCUnitTestBehavior)
 
 #define BrComMobilemindJ2objcUnitTestBehavior J2ObjCUnitTestBehavior
 
-#endif
 
-#pragma pop_macro("INCLUDE_ALL_TestBehavior")
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
+#endif // TestBehavior_H

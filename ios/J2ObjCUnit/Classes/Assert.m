@@ -193,6 +193,7 @@ withJ2ObjCUnitExceptionDelegate:(id<J2ObjCUnitExceptionDelegate>)operation {
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(fail);
   methods[2].selector = @selector(failWithNSString:);
@@ -437,3 +438,5 @@ jint J2ObjCUnitAssert_compareWithId_withId_(id obj1, id obj2) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(J2ObjCUnitAssert)
+
+J2OBJC_NAME_MAPPING(J2ObjCUnitAssert, "br.com.mobilemind.j2objc.unit", "J2ObjCUnit")

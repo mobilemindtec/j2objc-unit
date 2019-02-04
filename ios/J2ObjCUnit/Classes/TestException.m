@@ -20,6 +20,7 @@
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithNSString:);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "LNSString;" };
@@ -42,3 +43,5 @@ J2ObjCUnitTestException *create_J2ObjCUnitTestException_initWithNSString_(NSStri
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(J2ObjCUnitTestException)
+
+J2OBJC_NAME_MAPPING(J2ObjCUnitTestException, "br.com.mobilemind.j2objc.unit", "J2ObjCUnit")
