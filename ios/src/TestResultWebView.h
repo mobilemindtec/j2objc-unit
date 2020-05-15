@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "TestSuite.h"
 #import "OutputDirImpl.h"
+#import <WebKit/WebKit.h>
 
-@interface TestResultWebView : UIViewController<UINavigationControllerDelegate, UIWebViewDelegate>{
+@interface TestResultWebView : UIViewController<UINavigationControllerDelegate, WKUIDelegate>{
 
-    UIWebView *webView;
+    WKWebView  *webView;
     UIView *activityIndicatorContainer;
     UIActivityIndicatorView *activityIndicator;
 }
