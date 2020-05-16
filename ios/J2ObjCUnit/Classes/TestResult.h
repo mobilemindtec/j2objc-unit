@@ -23,12 +23,12 @@
 
 #pragma mark Public
 
-- (instancetype __nonnull)init;
+- (instancetype __nonnull)initPackagePrivate;
 
-- (instancetype __nonnull)initWithNSString:(NSString *)className_
-                              withNSString:(NSString *)methodName
-                              withNSString:(NSString *)testMessage
-                                  withLong:(jlong)executionTime;
+- (instancetype __nonnull)initPackagePrivateWithNSString:(NSString *)className_
+                                            withNSString:(NSString *)methodName
+                                            withNSString:(NSString *)testMessage
+                                                withLong:(jlong)executionTime;
 
 - (NSString *)getClassName;
 
@@ -54,6 +54,10 @@
 
 - (NSString *)description;
 
+// Disallowed inherited constructors, do not use.
+
+- (instancetype __nonnull)init NS_UNAVAILABLE;
+
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(J2ObjCUnitTestResult)
@@ -63,17 +67,17 @@ inline NSString *J2ObjCUnitTestResult_get_SUCCESS_MESSAGE(void);
 FOUNDATION_EXPORT NSString *J2ObjCUnitTestResult_SUCCESS_MESSAGE;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(J2ObjCUnitTestResult, SUCCESS_MESSAGE, NSString *)
 
-FOUNDATION_EXPORT void J2ObjCUnitTestResult_init(J2ObjCUnitTestResult *self);
+FOUNDATION_EXPORT void J2ObjCUnitTestResult_initPackagePrivate(J2ObjCUnitTestResult *self);
 
-FOUNDATION_EXPORT J2ObjCUnitTestResult *new_J2ObjCUnitTestResult_init(void) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT J2ObjCUnitTestResult *new_J2ObjCUnitTestResult_initPackagePrivate(void) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT J2ObjCUnitTestResult *create_J2ObjCUnitTestResult_init(void);
+FOUNDATION_EXPORT J2ObjCUnitTestResult *create_J2ObjCUnitTestResult_initPackagePrivate(void);
 
-FOUNDATION_EXPORT void J2ObjCUnitTestResult_initWithNSString_withNSString_withNSString_withLong_(J2ObjCUnitTestResult *self, NSString *className_, NSString *methodName, NSString *testMessage, jlong executionTime);
+FOUNDATION_EXPORT void J2ObjCUnitTestResult_initPackagePrivateWithNSString_withNSString_withNSString_withLong_(J2ObjCUnitTestResult *self, NSString *className_, NSString *methodName, NSString *testMessage, jlong executionTime);
 
-FOUNDATION_EXPORT J2ObjCUnitTestResult *new_J2ObjCUnitTestResult_initWithNSString_withNSString_withNSString_withLong_(NSString *className_, NSString *methodName, NSString *testMessage, jlong executionTime) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT J2ObjCUnitTestResult *new_J2ObjCUnitTestResult_initPackagePrivateWithNSString_withNSString_withNSString_withLong_(NSString *className_, NSString *methodName, NSString *testMessage, jlong executionTime) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT J2ObjCUnitTestResult *create_J2ObjCUnitTestResult_initWithNSString_withNSString_withNSString_withLong_(NSString *className_, NSString *methodName, NSString *testMessage, jlong executionTime);
+FOUNDATION_EXPORT J2ObjCUnitTestResult *create_J2ObjCUnitTestResult_initPackagePrivateWithNSString_withNSString_withNSString_withLong_(NSString *className_, NSString *methodName, NSString *testMessage, jlong executionTime);
 
 J2OBJC_TYPE_LITERAL_HEADER(J2ObjCUnitTestResult)
 

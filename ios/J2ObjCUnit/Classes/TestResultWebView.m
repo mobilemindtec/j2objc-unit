@@ -44,8 +44,9 @@
 
     self.view.backgroundColor = UIColor.whiteColor;
 
-    webView = [[UIWebView alloc] initWithFrame: self.view.frame];
-    webView.delegate = self;
+    WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];    
+    webView = [[WKWebView alloc] initWithFrame: self.view.frame configuration: configuration];
+    [webView setUIDelegate:self];
     [self.view addSubview: webView];
 
     [self initActivityIndicator];
@@ -91,7 +92,7 @@
         }
 
         dispatch_async(dispatch_get_main_queue(), ^(void) {
-            [webView loadHTMLString: contents baseURL: baseUrl];
+            [webView loadHTMLString: contents baseURL: nil];
             [activityIndicatorContainer removeFromSuperview];
             [activityIndicator stopAnimating];
         });

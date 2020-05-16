@@ -51,12 +51,10 @@ JavaUtilLoggingLogger *J2ObjCUnitTestRunner_logger;
   return J2ObjCUnitTestRunner_logger;
 }
 
-J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  J2ObjCUnitTestRunner_init(self);
+- (instancetype)initPackagePrivate {
+  J2ObjCUnitTestRunner_initPackagePrivate(self);
   return self;
 }
-J2OBJC_IGNORE_DESIGNATED_END
 
 + (void)cleanResults {
   J2ObjCUnitTestRunner_cleanResults();
@@ -86,7 +84,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(init);
+  methods[0].selector = @selector(initPackagePrivate);
   methods[1].selector = @selector(cleanResults);
   methods[2].selector = @selector(printTestsResultWithJ2ObjCUnitOutputDir:);
   methods[3].selector = @selector(runWithIOSClass:withId:);
@@ -111,16 +109,16 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 @end
 
-void J2ObjCUnitTestRunner_init(J2ObjCUnitTestRunner *self) {
+void J2ObjCUnitTestRunner_initPackagePrivate(J2ObjCUnitTestRunner *self) {
   NSObject_init(self);
 }
 
-J2ObjCUnitTestRunner *new_J2ObjCUnitTestRunner_init() {
-  J2OBJC_NEW_IMPL(J2ObjCUnitTestRunner, init)
+J2ObjCUnitTestRunner *new_J2ObjCUnitTestRunner_initPackagePrivate() {
+  J2OBJC_NEW_IMPL(J2ObjCUnitTestRunner, initPackagePrivate)
 }
 
-J2ObjCUnitTestRunner *create_J2ObjCUnitTestRunner_init() {
-  J2OBJC_CREATE_IMPL(J2ObjCUnitTestRunner, init)
+J2ObjCUnitTestRunner *create_J2ObjCUnitTestRunner_initPackagePrivate() {
+  J2OBJC_CREATE_IMPL(J2ObjCUnitTestRunner, initPackagePrivate)
 }
 
 void J2ObjCUnitTestRunner_cleanResults() {
@@ -190,7 +188,7 @@ void J2ObjCUnitTestRunner_runWithIOSClass_withId_(IOSClass *clazz, id context) {
       testMessage = J2ObjCUnitTestResult_SUCCESS_MESSAGE;
     }
     testTime = JavaLangSystem_currentTimeMillis() - testTime;
-    J2ObjCUnitTestResult *tr = new_J2ObjCUnitTestResult_initWithNSString_withNSString_withNSString_withLong_([clazz getName], [((JavaLangReflectMethod *) nil_chk(testMethod)) getName], testMessage, testTime);
+    J2ObjCUnitTestResult *tr = new_J2ObjCUnitTestResult_initPackagePrivateWithNSString_withNSString_withNSString_withLong_([clazz getName], [((JavaLangReflectMethod *) nil_chk(testMethod)) getName], testMessage, testTime);
     for (NSString * __strong msg in nil_chk([testCase getMessage])) {
       [((id<JavaUtilList>) nil_chk([tr getMessages])) addWithId:msg];
     }

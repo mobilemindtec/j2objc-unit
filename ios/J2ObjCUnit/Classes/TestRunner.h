@@ -34,7 +34,11 @@
 
 #pragma mark Package-Private
 
-- (instancetype __nonnull)init;
+- (instancetype __nonnull)initPackagePrivate;
+
+// Disallowed inherited constructors, do not use.
+
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
@@ -45,11 +49,11 @@ inline JavaUtilLoggingLogger *J2ObjCUnitTestRunner_get_logger(void);
 FOUNDATION_EXPORT JavaUtilLoggingLogger *J2ObjCUnitTestRunner_logger;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(J2ObjCUnitTestRunner, logger, JavaUtilLoggingLogger *)
 
-FOUNDATION_EXPORT void J2ObjCUnitTestRunner_init(J2ObjCUnitTestRunner *self);
+FOUNDATION_EXPORT void J2ObjCUnitTestRunner_initPackagePrivate(J2ObjCUnitTestRunner *self);
 
-FOUNDATION_EXPORT J2ObjCUnitTestRunner *new_J2ObjCUnitTestRunner_init(void) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT J2ObjCUnitTestRunner *new_J2ObjCUnitTestRunner_initPackagePrivate(void) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT J2ObjCUnitTestRunner *create_J2ObjCUnitTestRunner_init(void);
+FOUNDATION_EXPORT J2ObjCUnitTestRunner *create_J2ObjCUnitTestRunner_initPackagePrivate(void);
 
 FOUNDATION_EXPORT void J2ObjCUnitTestRunner_cleanResults(void);
 

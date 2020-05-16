@@ -32,18 +32,16 @@ NSString *J2ObjCUnitTestResult_SUCCESS_MESSAGE = @"test passed";
   return J2ObjCUnitTestResult_SUCCESS_MESSAGE;
 }
 
-J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  J2ObjCUnitTestResult_init(self);
+- (instancetype)initPackagePrivate {
+  J2ObjCUnitTestResult_initPackagePrivate(self);
   return self;
 }
-J2OBJC_IGNORE_DESIGNATED_END
 
-- (instancetype)initWithNSString:(NSString *)className_
-                    withNSString:(NSString *)methodName
-                    withNSString:(NSString *)testMessage
-                        withLong:(jlong)executionTime {
-  J2ObjCUnitTestResult_initWithNSString_withNSString_withNSString_withLong_(self, className_, methodName, testMessage, executionTime);
+- (instancetype)initPackagePrivateWithNSString:(NSString *)className_
+                                  withNSString:(NSString *)methodName
+                                  withNSString:(NSString *)testMessage
+                                      withLong:(jlong)executionTime {
+  J2ObjCUnitTestResult_initPackagePrivateWithNSString_withNSString_withNSString_withLong_(self, className_, methodName, testMessage, executionTime);
   return self;
 }
 
@@ -115,8 +113,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(init);
-  methods[1].selector = @selector(initWithNSString:withNSString:withNSString:withLong:);
+  methods[0].selector = @selector(initPackagePrivate);
+  methods[1].selector = @selector(initPackagePrivateWithNSString:withNSString:withNSString:withLong:);
   methods[2].selector = @selector(getClassName);
   methods[3].selector = @selector(getExecutionTime);
   methods[4].selector = @selector(getMethodName);
@@ -145,20 +143,20 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 @end
 
-void J2ObjCUnitTestResult_init(J2ObjCUnitTestResult *self) {
+void J2ObjCUnitTestResult_initPackagePrivate(J2ObjCUnitTestResult *self) {
   NSObject_init(self);
   self->messages_ = new_JavaUtilArrayList_init();
 }
 
-J2ObjCUnitTestResult *new_J2ObjCUnitTestResult_init() {
-  J2OBJC_NEW_IMPL(J2ObjCUnitTestResult, init)
+J2ObjCUnitTestResult *new_J2ObjCUnitTestResult_initPackagePrivate() {
+  J2OBJC_NEW_IMPL(J2ObjCUnitTestResult, initPackagePrivate)
 }
 
-J2ObjCUnitTestResult *create_J2ObjCUnitTestResult_init() {
-  J2OBJC_CREATE_IMPL(J2ObjCUnitTestResult, init)
+J2ObjCUnitTestResult *create_J2ObjCUnitTestResult_initPackagePrivate() {
+  J2OBJC_CREATE_IMPL(J2ObjCUnitTestResult, initPackagePrivate)
 }
 
-void J2ObjCUnitTestResult_initWithNSString_withNSString_withNSString_withLong_(J2ObjCUnitTestResult *self, NSString *className_, NSString *methodName, NSString *testMessage, jlong executionTime) {
+void J2ObjCUnitTestResult_initPackagePrivateWithNSString_withNSString_withNSString_withLong_(J2ObjCUnitTestResult *self, NSString *className_, NSString *methodName, NSString *testMessage, jlong executionTime) {
   NSObject_init(self);
   self->messages_ = new_JavaUtilArrayList_init();
   self->className__ = className_;
@@ -167,12 +165,12 @@ void J2ObjCUnitTestResult_initWithNSString_withNSString_withNSString_withLong_(J
   self->executionTime_ = executionTime;
 }
 
-J2ObjCUnitTestResult *new_J2ObjCUnitTestResult_initWithNSString_withNSString_withNSString_withLong_(NSString *className_, NSString *methodName, NSString *testMessage, jlong executionTime) {
-  J2OBJC_NEW_IMPL(J2ObjCUnitTestResult, initWithNSString_withNSString_withNSString_withLong_, className_, methodName, testMessage, executionTime)
+J2ObjCUnitTestResult *new_J2ObjCUnitTestResult_initPackagePrivateWithNSString_withNSString_withNSString_withLong_(NSString *className_, NSString *methodName, NSString *testMessage, jlong executionTime) {
+  J2OBJC_NEW_IMPL(J2ObjCUnitTestResult, initPackagePrivateWithNSString_withNSString_withNSString_withLong_, className_, methodName, testMessage, executionTime)
 }
 
-J2ObjCUnitTestResult *create_J2ObjCUnitTestResult_initWithNSString_withNSString_withNSString_withLong_(NSString *className_, NSString *methodName, NSString *testMessage, jlong executionTime) {
-  J2OBJC_CREATE_IMPL(J2ObjCUnitTestResult, initWithNSString_withNSString_withNSString_withLong_, className_, methodName, testMessage, executionTime)
+J2ObjCUnitTestResult *create_J2ObjCUnitTestResult_initPackagePrivateWithNSString_withNSString_withNSString_withLong_(NSString *className_, NSString *methodName, NSString *testMessage, jlong executionTime) {
+  J2OBJC_CREATE_IMPL(J2ObjCUnitTestResult, initPackagePrivateWithNSString_withNSString_withNSString_withLong_, className_, methodName, testMessage, executionTime)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(J2ObjCUnitTestResult)
