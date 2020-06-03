@@ -21,12 +21,20 @@
 #include "java/lang/System.h"
 #include "java/lang/Throwable.h"
 #include "java/lang/reflect/Method.h"
+#include "java/util/Arrays.h"
+#include "java/util/Comparator.h"
 #include "java/util/HashMap.h"
 #include "java/util/LinkedList.h"
 #include "java/util/List.h"
 #include "java/util/Map.h"
+#include "java/util/function/Function.h"
+#include "java/util/function/ToDoubleFunction.h"
+#include "java/util/function/ToIntFunction.h"
+#include "java/util/function/ToLongFunction.h"
 #include "java/util/logging/Level.h"
 #include "java/util/logging/Logger.h"
+
+#pragma clang diagnostic ignored "-Wprotocol"
 
 @interface J2ObjCUnitTestRunner ()
 
@@ -40,6 +48,23 @@ static id<JavaUtilMap> J2ObjCUnitTestRunner_testFails;
 J2OBJC_STATIC_FIELD_OBJ(J2ObjCUnitTestRunner, testFails, id<JavaUtilMap>)
 
 __attribute__((unused)) static NSString *J2ObjCUnitTestRunner_treatExceptionWithJavaLangException_(JavaLangException *e);
+
+@interface J2ObjCUnitTestRunner_1 : NSObject < JavaUtilComparator >
+
+- (instancetype)init;
+
+- (jint)compareWithId:(JavaLangReflectMethod *)o1
+               withId:(JavaLangReflectMethod *)o2;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(J2ObjCUnitTestRunner_1)
+
+__attribute__((unused)) static void J2ObjCUnitTestRunner_1_init(J2ObjCUnitTestRunner_1 *self);
+
+__attribute__((unused)) static J2ObjCUnitTestRunner_1 *new_J2ObjCUnitTestRunner_1_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static J2ObjCUnitTestRunner_1 *create_J2ObjCUnitTestRunner_1_init(void);
 
 J2OBJC_INITIALIZED_DEFN(J2ObjCUnitTestRunner)
 
@@ -156,6 +181,7 @@ void J2ObjCUnitTestRunner_runWithIOSClass_withId_(IOSClass *clazz, id context) {
     [((JavaUtilLoggingLogger *) nil_chk(J2ObjCUnitTestRunner_logger)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, SEVERE) withNSString:@"can't create instance of " withJavaLangThrowable:e];
     @throw new_JavaLangRuntimeException_initWithNSString_(JreStrcat("$$", @"can't create instance of ", [clazz getName]));
   }
+  JavaUtilArrays_sortWithNSObjectArray_withJavaUtilComparator_(methods, new_J2ObjCUnitTestRunner_1_init());
   {
     IOSObjectArray *a__ = methods;
     JavaLangReflectMethod * const *b__ = ((IOSObjectArray *) nil_chk(a__))->buffer_;
@@ -251,3 +277,76 @@ NSString *J2ObjCUnitTestRunner_treatExceptionWithJavaLangException_(JavaLangExce
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(J2ObjCUnitTestRunner)
+
+@implementation J2ObjCUnitTestRunner_1
+
+J2OBJC_IGNORE_DESIGNATED_BEGIN
+- (instancetype)init {
+  J2ObjCUnitTestRunner_1_init(self);
+  return self;
+}
+J2OBJC_IGNORE_DESIGNATED_END
+
+- (jint)compareWithId:(JavaLangReflectMethod *)o1
+               withId:(JavaLangReflectMethod *)o2 {
+  return [((NSString *) nil_chk([((JavaLangReflectMethod *) nil_chk(o1)) getName])) compareToWithId:[((JavaLangReflectMethod *) nil_chk(o2)) getName]];
+}
+
+- (id<JavaUtilComparator>)reversed {
+  return JavaUtilComparator_reversed(self);
+}
+
+- (id<JavaUtilComparator>)thenComparingWithJavaUtilComparator:(id<JavaUtilComparator>)arg0 {
+  return JavaUtilComparator_thenComparingWithJavaUtilComparator_(self, arg0);
+}
+
+- (id<JavaUtilComparator>)thenComparingWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0
+                                             withJavaUtilComparator:(id<JavaUtilComparator>)arg1 {
+  return JavaUtilComparator_thenComparingWithJavaUtilFunctionFunction_withJavaUtilComparator_(self, arg0, arg1);
+}
+
+- (id<JavaUtilComparator>)thenComparingWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilComparator_thenComparingWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilComparator>)thenComparingIntWithJavaUtilFunctionToIntFunction:(id<JavaUtilFunctionToIntFunction>)arg0 {
+  return JavaUtilComparator_thenComparingIntWithJavaUtilFunctionToIntFunction_(self, arg0);
+}
+
+- (id<JavaUtilComparator>)thenComparingLongWithJavaUtilFunctionToLongFunction:(id<JavaUtilFunctionToLongFunction>)arg0 {
+  return JavaUtilComparator_thenComparingLongWithJavaUtilFunctionToLongFunction_(self, arg0);
+}
+
+- (id<JavaUtilComparator>)thenComparingDoubleWithJavaUtilFunctionToDoubleFunction:(id<JavaUtilFunctionToDoubleFunction>)arg0 {
+  return JavaUtilComparator_thenComparingDoubleWithJavaUtilFunctionToDoubleFunction_(self, arg0);
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 0, 1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(compareWithId:withId:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "compare", "LJavaLangReflectMethod;LJavaLangReflectMethod;", "LJ2ObjCUnitTestRunner;", "runWithIOSClass:withId:", "Ljava/lang/Object;Ljava/util/Comparator<Ljava/lang/reflect/Method;>;" };
+  static const J2ObjcClassInfo _J2ObjCUnitTestRunner_1 = { "", "br.com.mobilemind.j2objc.unit", ptrTable, methods, NULL, 7, 0x8018, 2, 0, 2, -1, 3, 4, -1 };
+  return &_J2ObjCUnitTestRunner_1;
+}
+
+@end
+
+void J2ObjCUnitTestRunner_1_init(J2ObjCUnitTestRunner_1 *self) {
+  NSObject_init(self);
+}
+
+J2ObjCUnitTestRunner_1 *new_J2ObjCUnitTestRunner_1_init() {
+  J2OBJC_NEW_IMPL(J2ObjCUnitTestRunner_1, init)
+}
+
+J2ObjCUnitTestRunner_1 *create_J2ObjCUnitTestRunner_1_init() {
+  J2OBJC_CREATE_IMPL(J2ObjCUnitTestRunner_1, init)
+}

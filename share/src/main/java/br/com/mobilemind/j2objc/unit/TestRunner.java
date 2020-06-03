@@ -3,10 +3,7 @@ package br.com.mobilemind.j2objc.unit;
 import java.io.File;
 import java.io.FileWriter;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -52,6 +49,13 @@ class TestRunner {
             logger.log(Level.SEVERE, "can't create instance of ", e);
             throw new RuntimeException("can't create instance of " + clazz.getName());
         }
+
+        Arrays.sort(methods, new Comparator<Method>() {
+            public int compare(Method o1, Method o2) {
+                // Intentional: Reverse order for this demo
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
 
         for (Method method : methods) {
             if (method.getName().startsWith("test")) {
