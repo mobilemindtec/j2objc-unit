@@ -1,6 +1,6 @@
 package br.com.mobilemind.j2objc.unit;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
@@ -8,7 +8,7 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
 
-public class TestResultWebView extends Activity {
+public class TestResultWebView extends AppCompatActivity {
 
     private ProgressBarManager progressBarManager;
     private WebView webView;
